@@ -106,6 +106,38 @@
     justify-content: center;
     align-items: center;
   }
+
+  h2 {
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  #upload-form button {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  #upload-form button:hover {
+    background-color: #444;
+  }
+  #upload-form input {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  
   /* Responsive design */
   @media (max-width: 768px) {
     nav {
