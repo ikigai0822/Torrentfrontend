@@ -64,11 +64,33 @@
   
   header {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh; /* This will make the header take up the full height of the viewport */
+    justify-self: center;
   }
   
+  header h1 {
+    margin-bottom: 0;
+    margin-top: 10rem;
+  }
+  
+  header p {
+    margin-top: 0;
+    font-size: larger;
+    width: 40vw;
+    font-weight: 600;
+  }
+  
+  p {
+    color: #100f0f;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+    transition: text-shadow 0.3s ease;
+    text-align: justify;  
+  }
+  
+  p:hover {
+    text-shadow: 0 0 10px rgb(140, 0, 0), 0 0 20px #f00, 0 0 40px #f00;
+  }
 
   h1{
     color: #484848;
@@ -152,6 +174,44 @@
     font-size: 16px;
     cursor: pointer;
   }
+
+  
+  #torrent-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+  }
+  
+  #torrent-table th,
+  #torrent-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    
+  }
+  
+  #torrent-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #000;
+    pointer-events: none;
+  }
+  
+  #torrent-table tr {
+    background-color: #515050;
+    transition: background-color 0.3s ease;
+    color: #fbfbfb;
+  }
+  
+  #torrent-table tr:hover {
+    background-color: white;
+    transform: scale(1.01);
+    color: #000;
+  }
+  
+  /* #torrent-table tr:hover td {
+    color: black;
+  } */
 
   
   /* Responsive design */
