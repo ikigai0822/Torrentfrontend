@@ -16,6 +16,14 @@
     <h2>Upload Torrent</h2>
     <form id="upload-form">
       <input type="file" id="torrent-file" accept=".torrent,.zip,.rar">
+      <input type="text" id="description" placeholder="Description">
+      <input type="float" id="size" placeholder="Size">
+      <select id="category">
+        <option value="movies">Movies</option>
+        <option value="tv-shows">TV Shows</option>
+        <option value="games">Games</option>
+        <option value="music">Music</option>
+      </select>
       <button type="submit">Upload</button>
     </form>
   </main>

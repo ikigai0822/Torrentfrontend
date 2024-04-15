@@ -105,11 +105,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
   }
 
   h2 {
     font-size: 3rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  #description {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #size {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
 
   #upload-form button {

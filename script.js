@@ -1,53 +1,41 @@
+// fetch('http://3.110.77.116/torrents')
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   })
+//   .then(data => {
+//     let obj = data.Torrents
+//     console.log(obj[0])
+    
+//   })
 
-//uploading list of torrentz to the server 
-const uploadForm = document.getElementById('upload-form');
-const torrentFile = document.getElementById('torrent-file');
-const torrentList = document.getElementById('torrent-list');
+//   .catch(error => {
+//     console.error('There was a problem with the fetch operation:', error);
+//   });
 
-uploadForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const file = torrentFile.files[0];
-  const formData = new FormData();
-  formData.append('torrent', file);
-  fetch('https://api.example.com/upload', {
-    method: 'POST',
-    body: formData,
-  })
- .then(response => response.json())
- .then(data => {
-    const li = document.createElement('li');
-    li.textContent = data.name;
-    torrentList.appendChild(li);
-  })
- .catch(error => {
-    console.error(error);
-  });
-});
 
-//fetching list of torrents from the server
-fetch('https://api.example.com/list')
- .then(response => response.json())
- .then(data => {
-    const table = document.getElementById('torrent-table');
-    const headers = ['Name', 'Size', 'Seeders', 'Leechers', 'Download'];
-    const row = document.createElement('tr');
-    headers.forEach(header => {
-      const th = document.createElement('th');
-      th.textContent = header;
-      row.appendChild(th);
-    });
-    table.appendChild(row);
-    data.forEach(torrent => {
-      const row = document.createElement('tr');
-      const cols = [torrent.name, torrent.size, torrent.seeders, torrent.leechers, `<a href="${torrent.downloadLink}">Download</a>`];
-      cols.forEach(col => {
-        const td = document.createElement('td');
-        td.innerHTML = col;
-        row.appendChild(td);
-      });
-      table.appendChild(row);
-    });
-  })
- .catch(error => {
-    console.error(error);
-  });
+fetch('http://3.110.77.116/torrents')
+.then(response => response.json())
+.then(data => {
+     if (Array.isArray(data.Torrents)) {
+      console.log(data.Torrents) 
+      const torrentsBody = document.getElementById('torrents-body');
+       data.Torrents.forEach(torrent => {
+         const row = document.createElement('tr');
+         const categoryCell = document.createElement('td');
+         categoryCell.textContent = torrent.category;
+         const descriptionCell = document.createElement('td');
+         descriptionCell.textContent = torrent.description;
+         row.appendChild(categoryCell);
+         row.appendChild(descriptionCell);
+         torrentsBody.appendChild(row);
+       });
+     } else {
+       console.error('The data.Torrents is not an array');
+     }
+   })
+.catch(error => {
+     console.error(error);
+   });
