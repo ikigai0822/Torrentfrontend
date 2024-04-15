@@ -6,6 +6,8 @@ fetch('http://3.110.77.116/torrents')
       const torrentsBody = document.getElementById('torrents-body');
       data.Torrents.forEach(torrent => {
         const row = document.createElement('tr');
+        const titleCell = document.createElement('td');
+        titleCell.textContent = torrent.title;
         const categoryCell = document.createElement('td');
         categoryCell.textContent = torrent.category;
         const descriptionCell = document.createElement('td');
@@ -18,8 +20,19 @@ fetch('http://3.110.77.116/torrents')
         healthCell.textContent = torrent.health;
         const downloadsCell = document.createElement('td');
         downloadsCell.textContent = torrent.downloads;
-        const titleCell = document.createElement('td');
-        titleCell.textContent = torrent.title;
+        const actionsCell = document.createElement('td');
+        const downloadButton = document.createElement('button');
+        downloadButton.textContent = 'Download';
+        console.log(torrent.title);
+        downloadButton.addEventListener('click', () => {
+          const url = `http://3.110.77.116/static/${torrent.title}`;
+          const link = document.createElement('a');
+          console.log(url);
+          link.href = url;
+          link.download = torrent.title;
+          link.click();
+        });
+        actionsCell.appendChild(downloadButton);
         row.appendChild(titleCell);
         row.appendChild(categoryCell);
         row.appendChild(descriptionCell);
@@ -27,6 +40,7 @@ fetch('http://3.110.77.116/torrents')
         row.appendChild(typeCell);
         row.appendChild(healthCell);
         row.appendChild(downloadsCell);
+        row.appendChild(actionsCell);
         torrentsBody.appendChild(row);
       });
     } else {
