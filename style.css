@@ -142,6 +142,20 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
+  #category{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  #type{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
   #description {
     width: 100%;
