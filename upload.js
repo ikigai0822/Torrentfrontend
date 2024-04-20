@@ -2,7 +2,7 @@ const form = document.getElementById('upload-form');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(form);
-  fetch('http://3.110.77.116/torrents', {
+  fetch('http://65.0.110.20:8007/torrents', {
     method: 'POST',
     body: formData,
   })

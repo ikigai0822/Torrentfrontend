@@ -1,8 +1,9 @@
-fetch('http://3.110.77.116/torrents')
+fetch('http://65.0.110.20:8007/torrents')
  .then(response => response.json())
  .then(data => {
     if (Array.isArray(data.Torrents)) {
       console.log(data.Torrents)
+      console.log(typeof data.Torrents)
       const torrentsBody = document.getElementById('torrents-body');
       data.Torrents.forEach(torrent => {
         const row = document.createElement('tr');
@@ -25,12 +26,20 @@ fetch('http://3.110.77.116/torrents')
         downloadButton.textContent = 'Download';
         console.log(torrent.title);
         downloadButton.addEventListener('click', () => {
-          const url = `http://3.110.77.116/static/${torrent.title}`;
-          const link = document.createElement('a');
-          console.log(url);
-          link.href = url;
-          link.download = torrent.title;
-          link.click();
+          const url = `http://65.0.110.20:8007/static/${torrent.title}`;
+          fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+              const blobUrl = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = blobUrl;
+              link.download = torrent.title;
+              link.click();
+              URL.revokeObjectURL(blobUrl);  // Free up memory
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
         });
         actionsCell.appendChild(downloadButton);
         row.appendChild(titleCell);
