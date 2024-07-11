@@ -241,6 +241,24 @@
     color: black;
   } */
 
+
+  #avatar-container {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 1000;
+  }
+  
+  #avatar {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }
+  
+  .reaction {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+  }
   
   /* Responsive design */
   @media (max-width: 768px) {
